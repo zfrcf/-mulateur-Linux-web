@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Linux Pro - 2GB RAM</title>
+    <script src="libv86.js"></script>
+    <style>
+        body { background: #1a1a1a; color: white; font-family: sans-serif; }
+        #screen_container { border: 2px solid #444; display: inline-block; }
+    </style>
+</head>
+<body>
+    <h2>Console Linux (2 Go RAM)</h2>
+    
+    <div id="screen_container">
+        <div style="white-space: pre; font-family: monospace"></div>
+        <canvas style="display: none"></canvas>
+    </div>
+
+    <script>
+        var emulator = new V86Starter({
+            wasm_path: "v86.wasm",
+            // Calcul pour 2 Go en octets : 2 * 1024 * 1024 * 1024
+            memory_size: 2147483648, 
+            vga_assets: "vga-pci.bin",
+            bios: { url: "bios.bin" },
+            bzimage: { url: "buildroot-bzImage.bin" },
+            autostart: true,
+        });
+    </script>
+</body>
+</html>
