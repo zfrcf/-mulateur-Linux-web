@@ -1,15 +1,9 @@
-<script src="libv86.js"></script>
-<div id="screen_container">
-    <div style="white-space: pre; font-family: monospace"></div>
-    <canvas style="display: none"></canvas>
-</div>
-<script>
-    var emulator = new V86Starter({
-        wasm_path: "v86.wasm",
-        memory_size: 2048 * 1024 * 1024, // Tes 2 Go
-        vga_assets: "vga-pci.bin",
-        bios: { url: "bios.bin" },
-        cdrom: { url: "alpine.iso" }, // On charge l'ISO ici
-        autostart: true,
-    });
-</script>
+var emulator = new V86Starter({
+    wasm_path: "v86.wasm",
+    memory_size: 2048 * 1024 * 1024,
+    vga_assets: "vga-pci.bin",
+    bios: { url: "bios.bin" },
+    // On charge l'ISO directement depuis les serveurs d'Alpine
+    cdrom: { url: "https://dl-cdn.alpinelinux.org/alpine/v3.19/releases/x86/alpine-virt-3.19.1-x86.iso" },
+    autostart: true,
+});
